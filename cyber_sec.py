@@ -14,8 +14,6 @@ NEO4J_URI = os.environ.get("NEO4J_URI", "your-api-key-here")
 NEO4J_USER = os.environ.get("NEO4J_USER", "your-api-key-here")
 NEO4J_PASSWORD = os.environ.get("NEO4J_PASSWORD", "your-api-key-here")
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "your-api-key-here")
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "your-api-key-here")
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "your-api-key-here")
 
 # Connect to Neo4j
 class Neo4jDatabase:
@@ -87,15 +85,6 @@ class NLToCypherConverter:
             api_key=OPENAI_API_KEY
         )
 
-        # self.llm = ChatGoogleGenerativeAI(
-        #     model = "gemini-2.5-pro-exp-03-25",
-        #     temperature=0,
-        #     api_key= GEMINI_API_KEY
-        # )
-
-        # self.llm = ChatGroq(temperature=0, groq_api_key=GROQ_API_KEY, model_name="llama3-70b-8192")
-
-        
         self.prompt_template = PromptTemplate(
             input_variables=["schema", "question"],
             template="""You are a cybersecurity expert who translates natural language questions into Neo4j Cypher queries.
